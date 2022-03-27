@@ -1,0 +1,56 @@
+
+<h1>Upload Only .csv Files</h1>
+
+<form [formGroup]="uploadsForm" (ngSubmit)="submit()">
+
+
+
+    <div class="form-group">
+        <label for="file">File</label>
+        <input
+            formControlName="file"
+            id="file"
+            type="file"
+            accept=".csv"
+            class="form-control"
+            (change)="onFileChange($event)">
+
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<div>
+
+
+  <div class="row" *ngIf=" this.data.responseObj == null">
+    <div class="col-6">
+        Your Your upload failed
+    </div>
+
+
+  </div>
+  <!-- ========================= ==========================     = =========================-->
+  <section class="container" *ngIf="this.data.responseObj.successData.length > 0">
+      <div id="basket-view" class="container table-responsive">
+          <table class="table  table-borderless  ">
+              <thead class="thead-light">
+                  <tr>
+                      <th class="m-1">Account ID</th>
+                      <th class="m-1">Meter Reading Date/th>
+                      <th class="m-1 ">Meter Reading Value</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of this.data.responseObj.successData">
+                      <td>
+                           {{item.accountId}}
+
+                      </td>
+
+                  </tr>
+              </tbody>
+          </table>
+          <hr class="bg-dark" style="height: 2px;">
+      </div>
+  </section>

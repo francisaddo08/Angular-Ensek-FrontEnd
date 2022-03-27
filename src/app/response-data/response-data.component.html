@@ -1,0 +1,67 @@
+
+<div *ngIf="this.isData">
+  <div class="container">
+    <div class="  row" >
+      <div class="col-12">
+          Successful Meter reading
+      </div>
+
+    </div>
+
+  <!-- ========================= ==========================     = =========================-->
+  <section *ngIf="this.isData" class="container" >
+      <div id="basket-view" class="container table-responsive">
+          <table class="table ">
+              <thead class="thead-light">
+                  <tr >
+                      <th class="m-1">Account ID</th>
+                      <th class="m-1">Meter Reading Date</th>
+                      <th class="m-1 ">Meter Reading Value</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let success of this.response.sucessfulMeterReads">
+                      <td>{{success.accountId}} </td>
+                      <td> {{success.meterReadingDateTime}}</td>
+                      <td>  {{success.meterReadValue}}</td>
+
+                  </tr>
+              </tbody>
+          </table>
+
+      </div>
+  </section>
+  <div class="container">
+    <div class="  row" >
+      <div class="col-6">
+         <p> Failed Meter reading</p>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="container" >
+    <div id="basket-view" class="container table-responsive">
+        <table class="table ">
+            <thead class="thead-light">
+                <tr>
+                    <th class="m-1">Account ID</th>
+                    <th class="m-1">Meter Reading Date</th>
+                    <th class="m-1 ">Meter Reading Value</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                 <tr *ngFor="let success of this.response.failedMeterReads">
+                      <td>{{success.accountId}} </td>
+                      <td> {{success.meterReadingDateTime}}</td>
+                      <td>  {{success.meterReadValue}}</td>
+
+                  </tr>
+            </tbody>
+        </table>
+        <hr class="bg-dark" style="height: 2px;">
+    </div>
+</section>
+</div>
